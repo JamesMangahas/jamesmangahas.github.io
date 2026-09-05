@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="James Mangahas - n8n Automation Portfolio">
+  <title>James Mangahas | n8n Automation Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #070a12;
+      --bg-soft: #0d1220;
+      --card: rgba(255, 255, 255, 0.055);
+      --card-border: rgba(255, 255, 255, 0.11);
+      --text: #f5f7fb;
+      --muted: #a6afc0;
+      --accent: #7c8cff;
+      --accent-2: #a98bff;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(124, 140, 255, 0.14), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(169, 139, 255, 0.10), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 16px;
+      z-index: 20;
+      width: min(var(--max), calc(100% - 40px));
+      margin: 16px auto 0;
+      padding: 12px 16px;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      background: rgba(10, 14, 25, 0.62);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      place-items: center;
+      padding: 100px 0 70px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      background: var(--card);
+      color: #cdd3e0;
+      font-size: 13px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(12px);
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #7ee787;
+      box-shadow: 0 0 12px rgba(126, 231, 135, 0.55);
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 86px);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      margin-bottom: 24px;
+    }
+
+    .gradient {
+      background: linear-gradient(120deg, #ffffff 20%, #b7c0ff 55%, #c6a9ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 20px);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      background: rgba(255,255,255,0.055);
+      font-weight: 650;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: #0a0d15;
+      border-color: transparent;
+    }
+
+    .button.primary:hover {
+      background: #dfe3ee;
+    }
+
+    /* Sections */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 34px;
+    }
+
+    .section-heading .small {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(30px, 5vw, 46px);
+      letter-spacing: -0.045em;
+      line-height: 1.1;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 650px;
+      margin-top: 12px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+    }
+
+    .glass {
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .about-text p + p {
+      margin-top: 16px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: flex-start;
+    }
+
+    .skill {
+      padding: 9px 12px;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      color: #d9deea;
+      background: rgba(255,255,255,0.035);
+      font-size: 14px;
+    }
+
+    /* Projects */
+    .featured {
+      margin-bottom: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .project-image {
+      min-height: 330px;
+      background: #0a0f1b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-right: 1px solid var(--card-border);
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 330px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .project-image .fallback {
+      padding: 30px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .project-info {
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .tag {
+      display: inline-block;
+      width: fit-content;
+      padding: 6px 9px;
+      border-radius: 8px;
+      background: rgba(124, 140, 255, 0.12);
+      border: 1px solid rgba(124, 140, 255, 0.2);
+      color: #bdc6ff;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .project-info h3 {
+      font-size: 29px;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+    }
+
+    .project-info p {
+      color: var(--muted);
+    }
+
+    .flow {
+      margin: 20px 0;
+      padding: 13px 15px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #d6dbea;
+      font-size: 13px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 22px;
+    }
+
+    .tool {
+      color: #c1c8d7;
+      font-size: 12px;
+      padding: 5px 8px;
+      border-radius: 7px;
+      background: rgba(255,255,255,0.045);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .project-card .project-image {
+      min-height: 230px;
+      border-right: 0;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .project-card .project-image img {
+      min-height: 230px;
+    }
+
+    .project-card .project-info {
+      padding: 26px;
+    }
+
+    .project-card h3 {
+      font-size: 23px;
+    }
+
+    .project-card .flow {
+      white-space: normal;
+      line-height: 1.7;
+    }
+
+    /* Contact */
+    .contact {
+      text-align: center;
+      padding-bottom: 110px;
+    }
+
+    .contact-card {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin: 14px auto 24px;
+      max-width: 580px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 0;
+      color: #7f889a;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 78vh;
+        padding-top: 80px;
+      }
+
+      .about-grid,
+      .featured,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image {
+        border-right: 0;
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .featured .project-image {
+        min-height: 240px;
+      }
+
+      .featured .project-image img {
+        min-height: 240px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container,
+      nav {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .glass {
+        padding: 22px;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 50px;
+      }
+
+      .project-info {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#top" class="logo">James<span>.</span></a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Currently learning & building with n8n
+        </div>
+
+        <h1>
+          Hi, I'm James.<br>
+          <span class="gradient">I build automations.</span>
+        </h1>
+
+        <p>
+          I'm a Computer Science student focused on n8n and workflow automation.
+          I build practical workflows using APIs, webhooks, Google Sheets, Gmail,
+          JavaScript, and other tools to reduce repetitive work.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects" class="button primary">View My Work</a>
+          <a href="https://github.com/jamesmangahas" class="button" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="small">About</div>
+          <h2>A little about me</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="glass about-text">
+            <p>
+              I'm currently learning workflow automation with n8n and building
+              projects to get more hands-on experience.
+            </p>
+            <p>
+              I enjoy taking a task that normally needs to be done manually and
+              figuring out how it can be connected and automated.
+            </p>
+            <p>
+              This portfolio shows some of the workflows I've built while learning.
+              I'm continuing to improve and add new projects as I learn more.
+            </p>
+          </div>
+
+          <div class="glass" id="skills">
+            <h3 style="margin-bottom: 18px;">Tools I work with</h3>
+            <div class="skills">
+              <span class="skill">n8n</span>
+              <span class="skill">Webhooks</span>
+              <span class="skill">REST APIs</span>
+              <span class="skill">Google Sheets</span>
+              <span class="skill">Gmail</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">Shopify</span>
+              <span class="skill">OpenWeatherMap</span>
+              <span class="skill">Workflow Automation</span>
+              <span class="skill">Data Processing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="small">Selected work</div>
+          <h2>Projects I've built</h2>
+          <p>
+            A few practical n8n workflows I've built while learning automation.
+          </p>
+        </div>
+
+        <!-- FEATURED PROJECT -->
+        <article class="glass featured">
+          <div class="project-image">
+            <img
+              src="https://raw.githubusercontent.com/jamesmangahas/james-automation-portfolio/main/projects/shopify-store-monitor/workflow.png"
+              alt="Shopify Store Monitor n8n workflow"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            >
+            <div class="fallback" style="display:none;">
+              Shopify Store Monitor workflow screenshot
+            </div>
+          </div>
+
+          <div class="project-info">
+            <span class="tag">FEATURED PROJECT</span>
+            <h3>Shopify Store Monitor</h3>
+            <p>
+              An n8n workflow I built to monitor product information across
+              Shopify stores, process the data, detect changes, and log the results.
+            </p>
+
+            <div class="flow">
+              Manual Trigger → Store List → Loop → Fetch Products → Detect Changes → Google Sheets
+            </div>
+
+            <div class="tools">
+              <span class="tool">n8n</span>
+              <span class="tool">Shopify</span>
+              <span class="tool">JavaScript</span>
+              <span class="tool">Google Sheets</span>
+            </div>
+
+            <a
+              href="https://github.com/jamesmangahas/james-automation-portfolio/tree/main/projects/shopify-store-monitor"
+              class="button"
+              target="_blank"
+              rel="noopener"
+            >View Project →</a>
+          </div>
+        </article>
+
+        <div class="project-grid">
+
+          <!-- ISO CRM -->
+          <article class="glass project-card">
+            <div class="project-image">
+              <img
+                src="https://raw.githubusercontent.com/jamesmangahas/james-automation-portfolio/main/projects/iso-crm-new-lead-automation/workflow.png"
+                alt="ISO CRM new lead automation workflow"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+              >
+              <div class="fallback" style="display:none;">
+                ISO CRM workflow screenshot
+              </div>
+            </div>
+
+            <div class="project-info">
+              <span class="tag">LEAD AUTOMATION</span>
+              <h3>ISO CRM — New Lead Automation</h3>
+              <p>
+                A lead workflow that receives information through a webhook,
+                checks it, stores it in Google Sheets, and sends a message automatically.
+              </p>
+
+              <div class="flow">
+                Webhook → IF → Edit Fields → Google Sheets → Gmail
+              </div>
+
+              <div class="tools">
+                <span class="tool">n8n</span>
+                <span class="tool">Webhook</span>
+                <span class="tool">Google Sheets</span>
+                <span class="tool">Gmail</span>
+              </div>
+
+              <a
+                href="https://github.com/jamesmangahas/james-automation-portfolio/tree/main/projects/iso-crm-new-lead-automation"
+                class="button"
+                target="_blank"
+                rel="noopener"
+              >View Project →</a>
+            </div>
+          </article>
+
+          <!-- WEATHER -->
+          <article class="glass project-card">
+            <div class="project-image">
+              <img
+                src="https://raw.githubusercontent.com/jamesmangahas/james-automation-portfolio/main/projects/automated-weather-app/workflow.png"
+                alt="Automated weather n8n workflow"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+              >
+              <div class="fallback" style="display:none;">
+                Automated Weather App workflow screenshot
+              </div>
+            </div>
+
+            <div class="project-info">
+              <span class="tag">API AUTOMATION</span>
+              <h3>Automated Weather App</h3>
+              <p>
+                A scheduled workflow that gets weather information from an API
+                and sends the result through email automatically.
+              </p>
+
+              <div class="flow">
+                Schedule Trigger → OpenWeatherMap → Email
+              </div>
+
+              <div class="tools">
+                <span class="tool">n8n</span>
+                <span class="tool">OpenWeatherMap API</span>
+                <span class="tool">Gmail</span>
+              </div>
+
+              <a
+                href="https://github.com/jamesmangahas/james-automation-portfolio/tree/main/projects/automated-weather-app"
+                class="button"
+                target="_blank"
+                rel="noopener"
+              >View Project →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="glass contact-card">
+          <div class="section-heading" style="margin-bottom: 0;">
+            <div class="small">Contact</div>
+            <h2>Let's connect</h2>
+            <p>
+              I'm open to learning opportunities, freelance work, and
+              entry-level automation roles.
+            </p>
+          </div>
+
+          <div class="buttons">
+            <a href="https://github.com/jamesmangahas" class="button primary" target="_blank" rel="noopener">GitHub</a>
+            <!-- Replace the # below with your LinkedIn profile -->
+            <a href="#" class="button" onclick="return false;">LinkedIn</a>
+            <!-- Replace the email below with your real email -->
+            <a href="mailto:your-email@example.com" class="button">Email Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 James Mangahas · Built with HTML, CSS & GitHub Pages
+    </div>
+  </footer>
+
+</body>
+</html>
